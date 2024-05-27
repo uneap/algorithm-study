@@ -16,6 +16,8 @@ public class 완전탐색_피보나치수열 {
     // f(1) -> 1
     // f(2) -> f(1) + f(0) = 1
     // f(3) -> f(1) + f(2) = 2
+    // 시간 복잡도 O(2^n)
+    // n = 20 이하의 수라서 재귀로 풀었음
     public static int fibonacci(int num) {
         if(num <= 0) {
             return 0;
