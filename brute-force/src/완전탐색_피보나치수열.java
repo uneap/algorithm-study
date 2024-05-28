@@ -9,7 +9,6 @@ public class 완전탐색_피보나치수열 {
     public static int solutionInt() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         return parseInt(br.readLine());
-
     }
     // 0 1 1 2 3 5 8 ...
     // f(0) -> 0
