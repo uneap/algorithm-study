@@ -27,6 +27,5 @@ public class 완전탐색_피보나치수열 {
     }
     public static void main(String[] args) throws IOException {
         System.out.println(fibonacci(solutionInt()));
-
     }
 }
