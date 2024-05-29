@@ -10,6 +10,10 @@ public class 완전탐색_시각 {
         List<Integer> nums = getNumbers();
         int count = 0;
         for(int i = 0; i <= nums.get(0); i++) {
+            // % 명령의 시작
+            // 0 채워질 문자
+            // 2 총 자리 수
+            // d 십진 정수
             if(String.format("%02d",i).contains(String.valueOf(nums.get(1)))) {
                 count += 60*60;
                 continue;
