@@ -30,16 +30,16 @@ public class 완전탐색_방정식 {
     public static void main(String[] args) throws IOException {
         List<Integer> numbers = getNumbers();
         //브루트포스
-//        for(int i = -999; i <= 999; i++) {
-//           for(int j = -999; j <= 999; j++) {
-//               if(numbers.get(0) * i + numbers.get(1) * j == numbers.get(2)) {
-//                   if(numbers.get(3) * i + numbers.get(4) * j == numbers.get(5)) {
-//                       System.out.println(i + " " + j);
-//                       return;
-//                   }
-//               }
-//           }
-//        }
+        for(int i = -999; i <= 999; i++) {
+           for(int j = -999; j <= 999; j++) {
+               if(numbers.get(0) * i + numbers.get(1) * j == numbers.get(2)) {
+                   if(numbers.get(3) * i + numbers.get(4) * j == numbers.get(5)) {
+                       System.out.println(i + " " + j);
+                       return;
+                   }
+               }
+           }
+        }
         //수학
         System.out.println((numbers.get(2) * numbers.get(4) - numbers.get(5) * numbers.get(1)) / (numbers.get(0) * numbers.get(4) - numbers.get(3) * numbers.get(1)) + " " +
             (numbers.get(2) * numbers.get(3) - numbers.get(5) * numbers.get(0)) / (numbers.get(1) * numbers.get(3) - numbers.get(4)*numbers.get(0)));
