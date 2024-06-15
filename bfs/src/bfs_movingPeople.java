@@ -14,7 +14,7 @@ public class bfs_movingPeople {
     // 10,v' 15,v' 20,v'
     // 20,v' 30,v' 25,v
     // 40,v 22,v 10,v
-    // 4way
+    // 4way bfs
     // 1. 한번에 visited 된 곳 합 / visit 영역 개수
     // 2. 방문되지 않은 곳 한번 확인, 없으면 나옴
     // 3. 연합 갱신
@@ -42,37 +42,25 @@ public class bfs_movingPeople {
         }
         search(world, l, r);
     }
+    static boolean out = true;
     public static void search(int[][] world, int l, int r) {
-        boolean out = true;
         int count = 0;
         while(true) {
-            count++;
-            int sum = 0;
-            boolean[][] visited = new boolean[world.length][world[0].length];
+            out = true;
             List<Node> unity = new ArrayList<>();
+            boolean[][] visited = new boolean[world.length][world[0].length];
             for (int i = 0; i < world.length; i++) {
                 for (int j = 0; j < world[0].length; j++) {
                     if (!visited[i][j]) {
                         bfs(world, visited, new Node(i, j), l, r, unity);
-                        if (unity.size() == 1) {
-                            out = true;
-                            continue;
-                        }
                     }
                 }
-            }
-            for (Node n : unity) {
-                sum += world[n.x][n.y];
-            }
-            System.out.println(sum + " " + unity.size());
-            sum /= unity.size();
-            for (Node n : unity) {
-                world[n.x][n.y] = sum;
-                System.out.println(sum);
             }
             if(out) {
                 System.out.println(count);
                 return;
+            } else {
+                count++;
             }
         }
     }
@@ -91,6 +79,7 @@ public class bfs_movingPeople {
                 if(dx < world.length && dx >= 0 && dy < world[0].length && dy >= 0 && !visited[dx][dy]) {
                     int difference = Math.abs(world[node.x][node.y] - world[dx][dy]);
                     if(difference <= r && difference >= l) {
+                        out = false;
                         visited[dx][dy] = true;
                         unity.add(new Node(dx, dy));
                         q.add(new Node(dx, dy));
@@ -98,5 +87,14 @@ public class bfs_movingPeople {
                 }
             }
         }
+        int sum = 0;
+        for (Node n : unity) {
+            sum += world[n.x][n.y];
+        }
+        sum /= unity.size();
+        for (Node n : unity) {
+            world[n.x][n.y] = sum;
+        }
+        unity.clear();
     }
 }
