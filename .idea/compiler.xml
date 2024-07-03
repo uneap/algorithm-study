@@ -11,6 +11,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="dikjstra" target="18" />
       <module name="dikjstra.main" target="18" />
     </bytecodeTargetLevel>
   </component>

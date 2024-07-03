@@ -6,7 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/bfs/bfs.iml" filepath="$PROJECT_DIR$/bfs/bfs.iml" />
       <module fileurl="file://$PROJECT_DIR$/brute-force/brute-force.iml" filepath="$PROJECT_DIR$/brute-force/brute-force.iml" />
       <module fileurl="file://$PROJECT_DIR$/dfs/dfs.iml" filepath="$PROJECT_DIR$/dfs/dfs.iml" />
-      <module fileurl="file://$PROJECT_DIR$/dikjstra.iml" filepath="$PROJECT_DIR$/dikjstra.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dikjstra/dikjstra.iml" filepath="$PROJECT_DIR$/dikjstra/dikjstra.iml" />
       <module fileurl="file://$PROJECT_DIR$/heap/heap.iml" filepath="$PROJECT_DIR$/heap/heap.iml" />
     </modules>
   </component>
