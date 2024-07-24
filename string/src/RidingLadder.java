@@ -32,6 +32,9 @@ public class RidingLadder {
     // 아래부터 ?가 나올 때까지 사다리 타기
     // 위와 아래 비교, 같으면 * 위의 i와 아래의 i + 1이 같으면 - 그 이상이면 x로 리턴
     // 가장 마지막 자리일 땐 * 빼준다.
+    //ABC
+    //-*-
+    //BAC
     public static String getLine(char[] downLadders, char[] upLadders) {
         StringBuilder answer = new StringBuilder();
         boolean noneMatch = false;

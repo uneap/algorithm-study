@@ -3,9 +3,6 @@ import static java.lang.Integer.parseInt;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 // 움직일 수 있는 건 상하 좌우인데 방향을 바꿈.
 //최대 직사각형 만들기
