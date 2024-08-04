@@ -10,9 +10,12 @@
       <module fileurl="file://$PROJECT_DIR$/greedy/greedy.iml" filepath="$PROJECT_DIR$/greedy/greedy.iml" />
       <module fileurl="file://$PROJECT_DIR$/heap/heap.iml" filepath="$PROJECT_DIR$/heap/heap.iml" />
       <module fileurl="file://$PROJECT_DIR$/math/math.iml" filepath="$PROJECT_DIR$/math/math.iml" />
+      <module fileurl="file://$PROJECT_DIR$/parsing/parsing.iml" filepath="$PROJECT_DIR$/parsing/parsing.iml" />
       <module fileurl="file://$PROJECT_DIR$/simulation/simulation.iml" filepath="$PROJECT_DIR$/simulation/simulation.iml" />
       <module fileurl="file://$PROJECT_DIR$/stack/stack.iml" filepath="$PROJECT_DIR$/stack/stack.iml" />
       <module fileurl="file://$PROJECT_DIR$/string/string.iml" filepath="$PROJECT_DIR$/string/string.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tree/tree.iml" filepath="$PROJECT_DIR$/tree/tree.iml" />
+      <module fileurl="file://$PROJECT_DIR$/two-pointer/two-pointer.iml" filepath="$PROJECT_DIR$/two-pointer/two-pointer.iml" />
     </modules>
   </component>
 </project>
