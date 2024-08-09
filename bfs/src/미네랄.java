@@ -1,3 +1,4 @@
+import static java.lang.Integer.highestOneBit;
 import static java.lang.Integer.parseInt;
 
 import java.io.BufferedReader;
@@ -20,6 +21,7 @@ public class 미네랄 {
     public static class Stone {
         int x;
         int y;
+        int cluster;
         public Stone(int x, int y) {
             this.x = x;
             this.y = y;
@@ -46,13 +48,7 @@ public class 미네랄 {
             if(floatLands == null) {
                 continue;
             }
-            boolean[][]visit = new boolean[R + 1][C];
-            for(int j = 0; j < floatLands.size(); j++) {
-                List<Stone> floatLocations = storeLocation(visit, floatLands.get(j));
-                if(floatLocations != null) {
-                    moveMineral(floatLocations);
-                }
-            }
+            moveMineral(floatLands);
         }
         print();
     }
@@ -71,7 +67,7 @@ public class 미네랄 {
             while(j < C) {
                 if(lands[fightLand][j].equals("x")) {
                     lands[fightLand][j] = ".";
-                    return floatLand(fightLand, j);
+                    return floatLand();
                 }
                 j++;
             }
@@ -80,29 +76,43 @@ public class 미네랄 {
             while(j >= 0) {
                 if(lands[fightLand][j].equals("x")) {
                     lands[fightLand][j] = ".";
-                    return floatLand(fightLand, j);
+                    return floatLand();
                 }
                 j--;
             }
         }
         return null;
     }
-    public static List<Stone> floatLand(int fightLand, int j) {
-        int[] directX = {1,0,0};
-        int[] directY = {0,1,-1};
-        List<Stone> floatLands = new ArrayList<>();
-        for(int i = 0; i < 3; i++) {
-            int dx = directX[i] + fightLand;
-            int dy = directY[i] + j;
-            if(dx < 0 || dy < 0 || dy > C) {
-                continue;
+    public static boolean isLand() {
+        for(int i = 0; i < C; i++) {
+            if(lands[1][i].equals("x")) {
+                return false;
             }
-            if(lands[dx][dy].equals(".")) {
-                continue;
-            }
-            floatLands.add(new Stone(dx, dy));
         }
-        return floatLands;
+        return true;
+    }
+    public static List<Stone> floatLand() {
+        boolean[][] visit = new boolean[R + 1][C];
+        List<Stone> stones = null;
+        int count = 0;
+        for(int i = R; i >= 1; i--) {
+            for(int j = 0; j < C; j++) {
+                if(visit[i][j]) {
+                    continue;
+                }
+                if(lands[i][j].equals("x")) {
+                    count++;
+                    if(count > 1) {
+                        return stones;
+                    }
+                    stones = storeLocation(visit, new Stone(i,j));
+                }
+            }
+        }
+        if(count == 1 && isLand()) {
+            return stones;
+        }
+        return null;
     }
     public static List<Stone> storeLocation(boolean[][] visit, Stone stone) {
         Queue<Stone> q = new LinkedList<>();
@@ -129,35 +139,33 @@ public class 미네랄 {
                 visit[dx][dy] = true;
             }
         }
-        boolean floating = false;
         for(int i = 1; i <= R; i++) {
             for(int j = 0; j < C; j++) {
-                if(lands[i][j].equals("x") && !visit[i][j]) {
-                    floating = true;
-                }
-            }
-        }
-        if(floating) {
-            for(int i = 1; i <= R; i++) {
-                for(int j = 0; j < C; j++) {
+                if(visit[i][j]) {
                     stones.add(new Stone(i, j));
                 }
             }
-            return stones;
         }
-        return null;
+        return stones;
     }
     public static void moveMineral(List<Stone> floatLocations){
         for(Stone stone : floatLocations) {
             lands[stone.x][stone.y] = ".";
         }
-        for(Stone stone : floatLocations) {
-            for(int i = stone.x - 1; i >= 0; i --) {
-                if(i == 0|| lands[i][stone.y].equals("x")) {
-                    lands[i + 1][stone.y] = "x";
-                    break;
+        int move = 1;
+        outerLoop:
+        while(true) {
+            for (Stone stone : floatLocations) {
+                if (stone.x - move == 0 || lands[stone.x - move][stone.y].equals("x")) {
+                    move--;
+                    break outerLoop;
                 }
             }
+            move++;
+        }
+
+        for(Stone stone : floatLocations) {
+            lands[stone.x - move][stone.y] = "x";
         }
     }
 }
