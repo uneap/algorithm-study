@@ -78,11 +78,13 @@ public class 도시분할계획 {
         if(parent[a] == a) return a;
         return parent[a] = find(parent[a]);
     }
+    // a와 b를 최상위 parent로 초기화 해주어야 완전 최상위 root에 반영이 되어서, Find할 때도 기존에 해당 root를 최상위로 설정되어있던 애들에 반영이 된다.
     public static void union(int a, int b) {
-        a = find(a);
-        b = find(b);
+        a = parent[a];
+        b = parent[b];
         if(a == b) return;
-        if(parent[a] > parent[b]) parent[a] = b;
-        else parent[b] = a;
+
+        if(parent[a] > parent[b]) parent[a] = parent[b];
+        else parent[b] = parent[a];
     }
 }
