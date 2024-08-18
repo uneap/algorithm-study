@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 public class 소난다 {
     static int N;
     static int[] cows;
+    static boolean[] prime;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
@@ -21,6 +22,16 @@ public class 소난다 {
         cows = new int[M];
         for(int i = 0; i < M; i++) {
             cows[i] = parseInt(st.nextToken());
+        }
+        prime = new boolean[9001];
+        Arrays.fill(prime, true);
+        for(int i = 2; i <= Math.sqrt(9000); i++) {
+            if(!prime[i]) {
+                continue;
+            }
+            for(int j = i * i; j <= 9000; j+= i) {
+                prime[j] = false;
+            }
         }
         List<Integer> cowWeights = new ArrayList<>();
         getFlyingCows(cowWeights, 0, 0, 0);
@@ -33,28 +44,15 @@ public class 소난다 {
     }
     public static void getFlyingCows(List<Integer> cowWeights, int sum, int count, int index) {
         if(count == N) {
-            if(prime(sum)) {
+            if(prime[sum]) {
                 cowWeights.add(sum);
-                return;
             }
+            return;
         }
         if(index == cows.length) {
             return;
         }
         getFlyingCows(cowWeights, sum + cows[index], count + 1, index + 1);
         getFlyingCows(cowWeights, sum, count, index + 1);
-    }
-    public static boolean prime(int sum) {
-        boolean[] prime = new boolean[sum + 1];
-        Arrays.fill(prime, true);
-        for(int i = 2; i <= Math.sqrt(sum); i++) {
-            if(!prime[i]) {
-                continue;
-            }
-            for(int j = i * i; j <= sum; j+= i) {
-                prime[j] = false;
-            }
-        }
-        return prime[sum];
     }
 }
