@@ -13,9 +13,6 @@ public class 타일채우기3 {
         dp[2] = 7;
         dp[3] = 22;
         long[] sum = new long[num + 3];
-        sum[0] = 1;
-        sum[1] = 1;
-        sum[2] = 1;
         sum[3] = 1;
         for(int i = 4; i <= num; i++) {
             sum[i] += (sum[i - 1] + dp[i - 3]) % 1000000007;
