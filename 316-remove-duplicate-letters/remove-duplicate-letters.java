@@ -20,7 +20,6 @@ class Solution {
                 continue;
             }
             while(!stack.isEmpty() && s.charAt(i) <= s.charAt(stack.peek()) && stack.peek() < index[s.charAt(stack.peek()) - 'a'] && i < index[s.charAt(stack.peek()) - 'a']) {
-                System.out.println(s.charAt(stack.peek()));
                 alphabet.remove(s.charAt(stack.peek()));
                 stack.pop();
             }
