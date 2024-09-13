@@ -1,4 +1,3 @@
-// 로테이트 형태로 소팅되어있기 때문에 조건 나누고 영역 좁히는 게 중요
 class Solution {
     public boolean search(int[] nums, int target) {
         int left = 0; int right = nums.length - 1;
@@ -7,18 +6,20 @@ class Solution {
             if(target == nums[mid]) {
                 return true;
             }
-            if(nums[mid] >= nums[left]) {
+            if(nums[mid] > nums[left] || nums[mid] > nums[right]) {
                 if(target < nums[mid] && target >= nums[left]) {
-                   right--;
+                    right = mid - 1;
                 } else {
-                    left++;
+                   left = mid + 1;                    
+                }
+            } else if (nums[mid] < nums[left] || nums[mid] < nums[right]){
+                if(target > nums[mid] && target <= nums[right]) {
+                    left = mid + 1;                    
+                } else {
+                    right = mid - 1;
                 }
             } else {
-                if(target > nums[mid] && target <= nums[right]) {
-                    left++;
-                } else {
-                    right--;
-                }
+                left++;
             }
         }
         return nums[left] == target;
