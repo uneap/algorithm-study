@@ -1,5 +1,5 @@
-// right가 mid보다 큰 경우, right = mid 
-// 큰 경우, left = mid + 1
+// mid에서 right범위에 있느냐 left에서 Mid 범위에 있느냐
+// right와 mid를 비교해야 범위선정이 가능함
 class Solution {
     public int findMin(int[] nums) {
         int left = 0; int right = nums.length - 1;
