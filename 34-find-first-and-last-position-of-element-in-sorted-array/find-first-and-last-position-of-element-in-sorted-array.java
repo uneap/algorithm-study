@@ -22,9 +22,9 @@ class Solution {
                 return range;
             }
             if(nums[mid] < target) {
-                left++;
+                left = mid + 1;
             } else {
-                right--;
+                right = mid - 1;
             }
         }
         return nums[left] == target ? new int[]{left, left} : range;
