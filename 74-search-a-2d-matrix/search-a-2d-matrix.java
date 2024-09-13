@@ -9,11 +9,12 @@ class Solution {
                 return true;
             }
             if(matrix[x][y] > target) {
-                right--;
+                right = mid - 1;
             } else {
-                left++;
+                left = mid + 1;
             }
         }
-        return matrix[left/ matrix[0].length][right%matrix[0].length] == target;
+        return (left / matrix[0].length) >= 0 && (right % matrix[0].length) >= 0 
+            && matrix[left/matrix[0].length][right%matrix[0].length] == target;
     }
 }
