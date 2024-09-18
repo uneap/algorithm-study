@@ -1,21 +1,17 @@
 class Solution {
     public List<List<Integer>> subsets(int[] nums) {
-        Set<List<Integer>> answers = new HashSet<>();
+        List<List<Integer>> answers = new ArrayList<>();
         make(answers, new LinkedList<>(), nums, 0);
         return new ArrayList<>(answers);
     }
     
-    public void make(Set<List<Integer>> answers, LinkedList<Integer> answer, int[] nums, int i) {
-        if(answer.size() > nums.length) {
-            return;
-        }
+    public void make(List<List<Integer>> answers, LinkedList<Integer> answer, int[] nums, int i) {
         answers.add(new ArrayList<>(answer));
-        if(i >= nums.length) {
-            return;
+        for(int index = i; index < nums.length; index++){
+            answer.add(nums[index]);
+            make(answers, answer, nums, index + 1);
+            answer.removeLast();
         }
-        answer.add(nums[i]);
-        make(answers, answer, nums, i + 1);
-        answer.removeLast();
-        make(answers, answer, nums, i + 1);
+        
     }
 }
