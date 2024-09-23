@@ -3,15 +3,21 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/algorithm-study.iml" filepath="$PROJECT_DIR$/.idea/algorithm-study.iml" />
+      <module fileurl="file://$PROJECT_DIR$/back-tracking/back-tracking.iml" filepath="$PROJECT_DIR$/back-tracking/back-tracking.iml" />
       <module fileurl="file://$PROJECT_DIR$/bfs/bfs.iml" filepath="$PROJECT_DIR$/bfs/bfs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/binary-search/binary-search.iml" filepath="$PROJECT_DIR$/binary-search/binary-search.iml" />
       <module fileurl="file://$PROJECT_DIR$/brute-force/brute-force.iml" filepath="$PROJECT_DIR$/brute-force/brute-force.iml" />
       <module fileurl="file://$PROJECT_DIR$/dfs/dfs.iml" filepath="$PROJECT_DIR$/dfs/dfs.iml" />
       <module fileurl="file://$PROJECT_DIR$/dikjstra/dikjstra.iml" filepath="$PROJECT_DIR$/dikjstra/dikjstra.iml" />
       <module fileurl="file://$PROJECT_DIR$/greedy/greedy.iml" filepath="$PROJECT_DIR$/greedy/greedy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hash/hash.iml" filepath="$PROJECT_DIR$/hash/hash.iml" />
       <module fileurl="file://$PROJECT_DIR$/heap/heap.iml" filepath="$PROJECT_DIR$/heap/heap.iml" />
       <module fileurl="file://$PROJECT_DIR$/math/math.iml" filepath="$PROJECT_DIR$/math/math.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mst/mst.iml" filepath="$PROJECT_DIR$/mst/mst.iml" />
       <module fileurl="file://$PROJECT_DIR$/parsing/parsing.iml" filepath="$PROJECT_DIR$/parsing/parsing.iml" />
+      <module fileurl="file://$PROJECT_DIR$/prefix-sum/prefix-sum.iml" filepath="$PROJECT_DIR$/prefix-sum/prefix-sum.iml" />
       <module fileurl="file://$PROJECT_DIR$/simulation/simulation.iml" filepath="$PROJECT_DIR$/simulation/simulation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sort/sort.iml" filepath="$PROJECT_DIR$/sort/sort.iml" />
       <module fileurl="file://$PROJECT_DIR$/stack/stack.iml" filepath="$PROJECT_DIR$/stack/stack.iml" />
       <module fileurl="file://$PROJECT_DIR$/string/string.iml" filepath="$PROJECT_DIR$/string/string.iml" />
       <module fileurl="file://$PROJECT_DIR$/tree/tree.iml" filepath="$PROJECT_DIR$/tree/tree.iml" />
