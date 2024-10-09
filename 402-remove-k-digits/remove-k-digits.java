@@ -1,29 +1,28 @@
+// stack에 넣으면서, 자기보다 더 큰 애 stack peek에 있으면 뺌
 import java.util.*;
-// stack에 넣음
-// stack이 비지 않았을 때, stack.peek()에서 뽑은 애와 순회하는 애 비교, stack이 더 클 경우 k가 0이 아닐 때 pop
 class Solution {
     public String removeKdigits(String num, int k) {
-        Stack<Character>stack = new Stack<>();
+        Stack<Integer> numbers = new Stack<>();
         for(int i = 0; i < num.length(); i++) {
-            while(!stack.isEmpty() && stack.peek() - '0' > num.charAt(i) - '0' && k != 0) {
-                stack.pop();
+            while(!numbers.isEmpty() && k > 0 && numbers.peek() > num.charAt(i) - '0') {
+                numbers.pop();
                 k--;
             }
-            stack.push(num.charAt(i));
+            numbers.push(num.charAt(i) - '0');
         }
-        while(k != 0) {
-            stack.pop();
+        while(k > 0) {
             k--;
+            numbers.pop();
         }
         StringBuilder sb = new StringBuilder();
-        while(!stack.isEmpty()) {
-            sb.append(stack.pop());
+        while(!numbers.isEmpty()) {
+            sb.append(numbers.pop());
         }
         String answer = sb.reverse().toString();
         while(answer.startsWith("0")) {
             answer = answer.substring(1);
         }
-        if(answer.equals("")){
+        if(answer.equals("")) {
             return "0";
         }
         return answer;
