@@ -1,19 +1,17 @@
+import java.math.*;
 class Solution {
     public int integerReplacement(int n) {
-        Map<Long, Integer> dp = new HashMap<>();
-        dp.put(1L, 0);
-        replacement(n, dp);
-        return dp.get(Long.valueOf(n));
+        return convert(new BigInteger(Integer.toString(n)), 0);
     }
-    public int replacement(long n, Map<Long, Integer> dp) {
-        if(n == 1) {
-            return 0;
+    
+    public int convert(BigInteger n, int count) {
+        if(n.equals(new BigInteger("1"))) {
+            return count;
         }
-        if(n % 2 == 1) {
-            dp.put(n, Math.min(dp.getOrDefault(n, Integer.MAX_VALUE), Math.min(replacement(n + 1, dp) + 1, replacement(n - 1, dp) + 1)));
+        if(n.remainder(new BigInteger("2")).equals(new BigInteger("0"))) {
+            return convert(n.divide(new BigInteger("2")), count + 1);
         } else {
-            dp.put(n, Math.min(dp.getOrDefault(n, Integer.MAX_VALUE), replacement(n / 2, dp) + 1));
+            return Math.min(convert(n.add(new BigInteger("1")), count + 1), convert(n.subtract(new BigInteger("1")), count + 1));
         }
-        return dp.get(n);
     }
 }
