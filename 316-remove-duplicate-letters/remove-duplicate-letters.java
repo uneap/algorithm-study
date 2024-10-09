@@ -1,37 +1,33 @@
-// 알파벳에 따라 가장 마지막 인덱스를 저장
-// peek했을 때 해당 알파벳확인, 해당 알파벳이 현재 인덱스가 가리키는 알파벳보다 크고, peek한 알파벳의 인덱스가 더 크다면 pop
-// 그렇지 않을 경우, 붙임
 import java.util.*;
 class Solution {
     public String removeDuplicateLetters(String s) {
-        int[] index = new int[27];
-        for(int i = 0; i < s.length();i++) {
-            index[s.charAt(i) - 'a'] = i;    
-        }
         Stack<Integer> stack = new Stack<>();
-        Set<Character> alphabet = new HashSet<>();
+        int[] alpha = new int['z' - 'a' + 1];
+        boolean[] visit = new boolean['z'-'a' + 1];
         for(int i = 0; i < s.length(); i++) {
-            if(stack.isEmpty()) {
-                stack.push(i);
-                alphabet.add(s.charAt(i));
+            alpha[s.charAt(i) - 'a'] = i;
+        }
+        for(int i = 0; i < s.length(); i++) {
+            if(visit[s.charAt(i) - 'a']) {
                 continue;
             }
-            if(alphabet.contains(s.charAt(i))) {
-                continue;
+            while(!stack.isEmpty() && s.charAt(stack.peek()) > s.charAt(i)) {
+                char c = s.charAt(stack.peek());
+                int alphaIndex = alpha[c - 'a'];
+                if(i < alphaIndex) {
+                    visit[c - 'a'] = false;
+                    stack.pop();
+                } else {
+                    break;
+                }
             }
-            while(!stack.isEmpty() && s.charAt(i) <= s.charAt(stack.peek()) && stack.peek() < index[s.charAt(stack.peek()) - 'a'] && i < index[s.charAt(stack.peek()) - 'a']) {
-                alphabet.remove(s.charAt(stack.peek()));
-                stack.pop();
-            }
-
             stack.push(i);
-            alphabet.add(s.charAt(i));
-            
+            visit[s.charAt(i) - 'a'] = true;
         }
-        StringBuilder answer = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
         while(!stack.isEmpty()) {
-            answer.append(s.charAt(stack.pop()));
+            sb.append(s.charAt(stack.pop()));
         }
-        return answer.reverse().toString();
+        return sb.reverse().toString();
     }
 }
