@@ -16,12 +16,14 @@ class Solution {
             nodes.add(node);
             node = node.next;
         }
-        if(nodes.size() -n - 1 >= 0){
-            node = nodes.get(nodes.size() -n - 1);
-            node.next = node.next.next;
-        } else {
-            return nodes.size() -n + 1 < nodes.size() ? nodes.get(nodes.size() - n + 1) : null;
+        if(nodes.size() - n - 1 < 0) {
+            if(nodes.size() - n + 1 < nodes.size()) {
+                return nodes.get(nodes.size() - n + 1);
+            }
+            return null;
         }
+        node = nodes.get(nodes.size() - n - 1);
+        node.next = node.next.next;
         return head;
     }
 }
