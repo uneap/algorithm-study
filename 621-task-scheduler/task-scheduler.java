@@ -1,24 +1,29 @@
-// 가장 최대 빈도로 나오는 알파벳에서 빈 부분 찾기
-// 그 빈부분 채워줄 수 있는 애 채워주고, 남은 애 더하기
+// 반복되는 알파벳의 크기를 먼저 정해야 함,
+// A _ _ A
+// 전체 길이를 정하고
+// 사이사이에 알파벳을 끼워넣는 형태로 유휴 상태 길이를 정할 수 있다
+// 가장 알파벳이 많은 애를 기준으로 전체 길이를 정한다
+// 유휴 상태 길이를 측정하기 위해서, 사이사이에 다른 알파벳을 끼워넣는다
+import java.util.*;
 class Solution {
     public int leastInterval(char[] tasks, int n) {
-        int maxCount = 0;
-        int maxIndex = 0;
-        int[] frequency = new int[27];
+        Map<Character, Integer> alphabets = new HashMap<>();
+        int maxAlphabetCount = 0;
+        char alphabet = ' ';
         for(int i = 0; i < tasks.length; i++) {
-            frequency[tasks[i] - 'A'] ++;
-            if(frequency[tasks[i] - 'A'] > maxCount) {
-                maxCount = frequency[tasks[i] - 'A'];
-                maxIndex = tasks[i] - 'A';
+            alphabets.put(tasks[i], alphabets.getOrDefault(tasks[i], 0) + 1);
+            if(maxAlphabetCount < alphabets.get(tasks[i])){
+                maxAlphabetCount = alphabets.get(tasks[i]);
+                alphabet = tasks[i];
             }
         }
-        int idle = (maxCount - 1) * n;
-        for(int i = 0; i <= 26; i++) {
-            if(i == maxIndex) {
+        int length = (maxAlphabetCount - 1) * n;
+        for(char c : alphabets.keySet()) {
+            if(alphabet == c) {
                 continue;
             }
-            idle -= Math.min(maxCount - 1, frequency[i]);
+                length -= Math.min(maxAlphabetCount - 1, alphabets.get(c));
         }
-        return idle < 0 ? tasks.length : tasks.length + idle;
+        return length < 0 ? tasks.length : tasks.length + length;
     }
 }
