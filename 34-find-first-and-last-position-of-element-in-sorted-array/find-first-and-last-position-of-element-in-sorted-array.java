@@ -1,3 +1,8 @@
+// 5 7 7 8 8 10
+// l         r
+// 0 1 2 3 4 5
+//     m
+//       l
 class Solution {
     public int[] searchRange(int[] nums, int target) {
         int[] answers = new int[2];
@@ -14,13 +19,13 @@ class Solution {
         int right = nums.length - 1;
         while(left <= right) {
             int mid = (left + right) / 2;
+            if(nums[mid] == target) {
+                index = mid;
+            }
             if(nums[mid] <= target) {
                 left = mid + 1;
             } else {
                 right = mid - 1;
-            }
-            if(nums[mid] == target) {
-                index = mid;
             }
         }
         return index;
@@ -32,13 +37,13 @@ class Solution {
         int right = nums.length - 1;
         while(left <= right) { // 가장 인덱스가 작을 것을 찾을 것임
             int mid = (left + right)/ 2;
+            if(nums[mid] == target) {
+                index = mid;
+            }
             if(nums[mid] >= target) {
                 right = mid - 1;
             }else {
                 left = mid + 1;
-            }
-            if(nums[mid] == target) {
-                index = mid;
             }
         }
         return index;
