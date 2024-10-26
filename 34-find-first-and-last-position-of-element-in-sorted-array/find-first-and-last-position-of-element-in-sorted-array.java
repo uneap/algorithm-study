@@ -1,32 +1,43 @@
 class Solution {
     public int[] searchRange(int[] nums, int target) {
-        int[] range = new int[2];
-        Arrays.fill(range, -1);
-        int left = 0; int right = nums.length - 1;
-        if(nums.length == 0) {
-            return new int[]{-1,-1};
-        }
-        while(left < right) {
+        int[] answers = new int[2];
+        answers[0] = findFirst(nums, target);
+        answers[1] = findLast(nums, target);
+        return answers;
+    }
+    public int findLast(int[] nums, int target) {
+        int index = -1;
+        int left = 0;
+        int right = nums.length - 1;
+        while(left <= right) {
             int mid = (left + right) / 2;
-            if(nums[mid] == target) {
-                if(range[0] == - 1) {
-                    range[0] = mid;
-                    range[1] = mid;
-                }
-                while(++mid < nums.length && nums[mid] == target){
-                    range[1] = mid;
-                }
-                while(--mid >= 0 && nums[mid] == target){
-                    range[0] = mid;
-                }
-                return range;
-            }
-            if(nums[mid] < target) {
+            if(nums[mid] <= target) {
                 left = mid + 1;
             } else {
                 right = mid - 1;
             }
+            if(nums[mid] == target) {
+                index = mid;
+            }
         }
-        return nums[left] == target ? new int[]{left, left} : range;
+        return index;
+    }
+    
+    public int findFirst(int[] nums, int target) {
+        int index = -1;
+        int left = 0;
+        int right = nums.length - 1;
+        while(left <= right) {
+            int mid = (left + right)/ 2;
+            if(nums[mid] >= target) {
+                right = mid - 1;
+            }else {
+                left = mid + 1;
+            }
+            if(nums[mid] == target) {
+                index = mid;
+            }
+        }
+        return index;
     }
 }
