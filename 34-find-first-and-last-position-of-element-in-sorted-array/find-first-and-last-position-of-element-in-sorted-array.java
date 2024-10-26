@@ -9,7 +9,7 @@ class Solution {
         int index = -1;
         int left = 0;
         int right = nums.length - 1;
-        while(left <= right) {
+        while(left <= right) { // 가장 인덱스가 큰 경우를 찾을 것임
             int mid = (left + right) / 2;
             if(nums[mid] <= target) {
                 left = mid + 1;
@@ -27,7 +27,7 @@ class Solution {
         int index = -1;
         int left = 0;
         int right = nums.length - 1;
-        while(left <= right) {
+        while(left <= right) { // 가장 인덱스가 작을 것을 찾을 것임
             int mid = (left + right)/ 2;
             if(nums[mid] >= target) {
                 right = mid - 1;
