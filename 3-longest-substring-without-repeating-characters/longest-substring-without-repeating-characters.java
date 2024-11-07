@@ -7,23 +7,21 @@
 import java.util.*;
 class Solution {
     public int lengthOfLongestSubstring(String s) {
-        int n = s.length();
-        int start = 0, end = 0, maxLength = 0;
-        Set<Character> uniqueChars = new HashSet<>();
-
-        while (end < n) {
-            if (!uniqueChars.contains(s.charAt(end))) {
-                // 문자 추가하고 end 포인터 증가
-                uniqueChars.add(s.charAt(end));
+        int end = 0;
+        int start = 0;
+        int answer = 0;
+        Set<Character> elements = new HashSet<>();
+        while(s.length() > end) {
+            char c = s.charAt(end);
+            if(!elements.contains(c)) {
+                elements.add(c);
                 end++;
-                maxLength = Math.max(maxLength, end - start);
-            } else {
-                // 중복 문자 제거 후 start 포인터 증가
-                uniqueChars.remove(s.charAt(start));
+                answer = Math.max(answer, end - start);
+            }else {
+                elements.remove(s.charAt(start));
                 start++;
             }
         }
-
-        return maxLength;
+        return answer;
     }
 }
